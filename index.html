@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AQMAT — Le Mur des 70 ans</title>
+<meta name="description" content="Édition patrimoniale du 70e du magazine AQMAT : 70 entreprises de 70 ans et plus, placées sur une même ligne du temps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* =======================================================================
+     CHARTE — relevée sur les pleines pages du Design (5 août 2026)
+     crème #F6F2E9 · pétrole #1E4F63 · or #B98C3F · brun #463F34
+     display : Playfair Display italique · texte : EB Garamond · repères : Lato
+     ======================================================================= */
+  :root{
+    --creme:#F6F2E9; --creme-pale:#FCFAF5; --blanc:#FFFDF8;
+    --petrole:#1E4F63; --petrole-cl:#2C6A86;
+    --or:#B98C3F; --brun:#463F34; --gris:#8A8272;
+    --filigrane:#EFE6D6; --ligne:#E4DCC8;
+    --band:#F3E8CF; --bandline:#E6D5AB; --bandtext:#7A5514;
+    --display:'Playfair Display',Georgia,serif;
+    --texte:'EB Garamond',Georgia,serif;
+    --ui:'Lato',-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:var(--texte);color:var(--brun);background:var(--creme);font-size:17px;line-height:1.6}
+  a{color:var(--petrole)} a:hover{color:var(--or)}
+  ::selection{background:#E9DDC2}
+
+  /* ---------- en-tête ---------- */
+  header.top{position:sticky;top:0;z-index:30;background:var(--petrole);color:var(--creme);
+    padding:13px 28px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+  header.top .brand{font-family:var(--ui);font-weight:700;letter-spacing:.32em;font-size:13px}
+  header.top .title{font-family:var(--display);font-style:italic;font-size:16px;opacity:.9}
+  header.top .ed{margin-left:auto;font-family:var(--ui);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.65}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--creme);border-bottom:1px solid var(--ligne)}
+  .hero .wm{position:absolute;right:2%;top:50%;transform:translateY(-50%);font-family:var(--display);
+    font-weight:700;font-size:330px;line-height:.8;color:var(--filigrane);user-select:none;pointer-events:none}
+  .hero .in{max-width:1120px;margin:0 auto;padding:58px 28px 44px;position:relative;text-align:center}
+  .kicker{font-family:var(--ui);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gris)}
+  .hero h1{font-family:var(--display);font-weight:500;font-style:italic;
+    font-size:clamp(32px,5vw,54px);line-height:1.14;margin:16px 0 0;color:var(--petrole)}
+  .hero .rule{width:58px;height:2px;background:var(--or);margin:20px auto 20px;border:0}
+  .hero p{max-width:60ch;margin:0 auto;font-size:18px;line-height:1.62;color:#5C564A}
+  .hero p strong{color:var(--petrole);font-weight:600}
+
+  /* ---------- bandeau d'avertissement ---------- */
+  .band{background:var(--band);border-bottom:1px solid var(--bandline);color:var(--bandtext);
+    font-family:var(--ui);font-size:13px;line-height:1.55;padding:11px 28px}
+  .band .in{max-width:1120px;margin:0 auto}
+
+  main{max-width:1120px;margin:0 auto;padding:10px 28px 70px}
+
+  h2.section{display:flex;align-items:baseline;gap:14px;margin:46px 0 4px;
+    border-bottom:1.5px solid var(--or);padding-bottom:10px;flex-wrap:wrap;
+    font-family:var(--display);font-weight:500;font-style:italic;font-size:32px;color:var(--petrole)}
+  h2.section .sub{font-family:var(--ui);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gris);font-style:normal;font-weight:400}
+
+  /* ---------- chiffres d'ouverture ---------- */
+  .stats-top{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0 6px}
+  .stats-top .b{background:var(--blanc);border:1px solid var(--ligne);padding:16px 14px;text-align:center}
+  .stats-top .v{font-family:var(--display);font-weight:700;font-size:32px;color:var(--petrole);line-height:1}
+  .stats-top .l{font-family:var(--ui);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);margin-top:7px}
+  @media (max-width:640px){ .stats-top{grid-template-columns:1fr;gap:10px} }
+
+  /* ---------- LA LIGNE DU TEMPS — le fil conducteur ---------- */
+  .tl-help{font-family:var(--ui);font-size:13px;color:var(--gris);margin:16px 0 4px}
+  .tl{position:relative;overflow-x:auto;padding:22px 0 16px}
+  .tl-line{position:absolute;top:74px;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--or),var(--petrole));border-radius:2px}
+  .tl-row{display:flex;gap:22px;min-width:max-content;padding:0 4px;align-items:flex-start}
+  .tl-col{width:172px}
+  .tl-head{background:none;border:0;padding:0;width:100%;cursor:pointer;font:inherit;color:inherit;display:block}
+  .tl-decade{font-family:var(--display);font-weight:700;color:var(--petrole);font-size:27px;text-align:center;line-height:1}
+  .tl-count{font-family:var(--ui);text-align:center;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);margin:5px 0 9px}
+  .tl-dot{border-radius:50%;margin:0 auto 16px;position:relative;z-index:2;box-shadow:0 0 0 5px var(--creme);
+    display:flex;align-items:center;justify-content:center;color:var(--creme);font-family:var(--ui);font-size:11px;font-weight:700;
+    transition:transform .14s}
+  .tl-head:hover .tl-dot{transform:scale(1.12)}
+  .tl-col.actif .tl-decade{color:var(--or)}
+  .tl-col.actif .tl-dot{box-shadow:0 0 0 5px var(--creme),0 0 0 7px var(--or)}
+  .tl-special{background:var(--or);color:#2E2409;padding:9px 11px;margin-bottom:9px;
+    font-family:var(--ui);font-size:10.5px;line-height:1.45;font-weight:700}
+  .tl-card{background:var(--blanc);border:1px solid var(--ligne);border-left:2.5px solid var(--or);
+    padding:7px 10px;margin-bottom:7px;cursor:pointer;transition:transform .12s,box-shadow .12s}
+  .tl-card:hover{transform:translateX(2px);box-shadow:0 3px 10px rgba(31,80,102,.12)}
+  .tl-card .y{font-family:var(--display);font-weight:700;font-size:14px;color:var(--petrole);line-height:1.1}
+  .tl-card .n{font-size:14px;line-height:1.3;margin-top:2px}
+  .tl-now .y{font-family:var(--display);font-weight:700;color:var(--or);font-size:27px;text-align:center;line-height:1}
+  .tl-now .lbl{font-family:var(--ui);text-align:center;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);margin:5px 0 9px}
+  .tl-now .dot{width:16px;height:16px;border-radius:50%;background:var(--or);margin:0 auto 16px;box-shadow:0 0 0 5px var(--creme)}
+  .tl-now .box{background:var(--petrole);color:var(--creme);padding:11px 12px;font-size:14px;line-height:1.5}
+
+  /* ---------- LE MUR ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 20px;align-items:center}
+  .filters input,.filters select{padding:10px 13px;border:1px solid var(--ligne);background:var(--blanc);
+    font-size:14px;font-family:var(--ui);color:var(--brun);outline:none}
+  .filters input[type=search]{flex:2;min-width:200px}
+  .filters select{flex:1;min-width:150px}
+  .filters .count{margin-left:auto;font-family:var(--ui);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+  .chip-actif{display:none;align-items:center;gap:8px;background:var(--petrole);color:var(--creme);
+    font-family:var(--ui);font-size:12px;letter-spacing:.08em;padding:9px 13px;cursor:pointer;border:0}
+  .chip-actif.on{display:inline-flex}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:18px}
+  @media (max-width:640px){ .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))} }
+  .card{background:var(--blanc);border:1px solid var(--ligne);overflow:hidden;cursor:pointer;
+    box-shadow:0 1px 3px rgba(60,50,30,.06);transition:transform .14s,box-shadow .14s;text-align:left}
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(31,80,102,.16)}
+  .card .cover{position:relative;height:150px;background:repeating-linear-gradient(45deg,#ECE4D1 0 9px,#E4DBC3 9px 18px);
+    display:flex;align-items:flex-end;padding:12px}
+  .card .chip{position:absolute;top:10px;right:10px;color:var(--creme);font-family:var(--ui);font-size:9.5px;
+    font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px}
+  .card .ph{position:absolute;top:12px;left:12px;font-family:var(--ui);font-size:10px;letter-spacing:.06em;color:#9A8F78}
+  .card .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;
+    background:rgba(255,253,248,.94);color:var(--petrole);display:flex;align-items:center;justify-content:center;
+    font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+  .card .yr{font-family:var(--display);font-weight:700;font-size:36px;color:var(--petrole);line-height:1}
+  .card .body{padding:11px 13px 14px}
+  .card .name{font-family:var(--display);font-weight:500;font-size:18px;color:var(--brun);line-height:1.25}
+  .card .meta{font-family:var(--ui);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);margin-top:5px}
+  .vide{font-family:var(--ui);color:var(--gris);font-size:14px;padding:30px 0}
+
+  .foot{color:#9A917D;font-family:var(--ui);font-size:11.5px;letter-spacing:.1em;text-align:center;padding:48px 20px 0;line-height:1.9}
+
+  /* ---------- fiche ---------- */
+  .overlay{position:fixed;inset:0;background:rgba(24,34,40,.62);display:none;align-items:flex-start;
+    justify-content:center;padding:5vh 16px;z-index:50;overflow-y:auto;backdrop-filter:blur(2px)}
+  .overlay.open{display:flex}
+  @media (max-width:640px){ .overlay{padding:0} }
+  .fiche{background:var(--blanc);max-width:680px;width:100%;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .fiche-head{padding:18px 22px;background:var(--petrole);color:var(--creme);display:flex;
+    justify-content:space-between;align-items:flex-start;gap:10px}
+  .fiche-head .catTag{display:inline-block;background:rgba(246,242,233,.18);color:var(--creme);
+    font-family:var(--ui);font-weight:700;font-size:9.5px;letter-spacing:.14em;padding:4px 9px;text-transform:uppercase}
+  .fiche-head h3{margin:9px 0 3px;font-family:var(--display);font-style:italic;font-weight:500;font-size:26px}
+  .fiche-head .meta{font-family:var(--ui);font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+  .fiche-head button{background:rgba(246,242,233,.14);border:none;color:var(--creme);width:32px;height:32px;
+    border-radius:50%;cursor:pointer;font-size:15px;flex:none}
+
+  .ba{position:relative;height:250px;overflow:hidden;user-select:none;touch-action:none;cursor:ew-resize}
+
+.ba img {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+  @media (max-width:640px){ .ba{height:190px} }
+  .ba .present{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--petrole),var(--petrole-cl))}
+  .ba .present span,.ba .past span{font-family:var(--ui);font-size:11.5px;letter-spacing:.08em;color:rgba(246,242,233,.88)}
+  .ba .clip{position:absolute;top:0;bottom:0;left:0;overflow:hidden}
+  .ba .past{position:absolute;top:0;bottom:0;left:0;width:100%;;max-width:96vw;
+    background:repeating-linear-gradient(45deg,#8A7657 0 10px,#7C6A4D 10px 20px);
+    display:flex;align-items:center;justify-content:center}
+  .ba .handle{position:absolute;top:0;bottom:0;width:3px;background:var(--blanc);z-index:3}
+  .ba .handle::after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:36px;height:36px;border-radius:50%;background:var(--blanc);color:var(--petrole);
+    display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  .ba .tag{position:absolute;bottom:10px;padding:4px 9px;font-family:var(--ui);font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;font-weight:700;background:rgba(0,0,0,.45);color:#fff}
+
+
+
+  .fiche-body{padding:20px 22px 12px}
+  .fiche-body .hint{color:var(--gris);font-size:14px;margin:0 0 18px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+  .stats .box{background:#F8F4EA;border:1px solid var(--ligne);padding:11px 12px;text-align:center}
+  .stats .box .v{font-family:var(--display);font-weight:700;font-size:23px;color:var(--petrole);line-height:1}
+  .stats .box .l{font-family:var(--ui);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);margin-top:5px}
+  .capsule-box{border:1px solid var(--ligne);padding:13px 15px;background:#F8F4EA;display:flex;gap:13px;
+    align-items:center;margin-bottom:18px}
+  .capsule-box .p{width:40px;height:40px;border-radius:50%;background:var(--petrole);color:var(--creme);
+    display:flex;align-items:center;justify-content:center;flex:none}
+  .capsule-box .t{font-size:14px;color:#6D6555;line-height:1.5}
+  .fiche-body h4{font-family:var(--ui);color:var(--petrole);font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;margin:20px 0 10px}
+  .reperes{margin-bottom:18px}
+  .repere{display:flex;gap:14px;align-items:baseline;padding:8px 0;border-bottom:1px dashed var(--ligne)}
+  .repere:last-child{border-bottom:none}
+  .repere .y{font-family:var(--display);font-weight:700;color:var(--or);font-size:16px;width:52px;flex:none}
+  .repere .t{font-size:15px;line-height:1.5}
+  .repere .ph{font-family:var(--ui);font-size:12px;color:#9A8F78}
+  .quote{font-family:var(--display);font-style:italic;font-size:19px;line-height:1.55;color:var(--brun);
+    border-left:2.5px solid var(--or);padding-left:15px;margin:6px 0}
+  .fiche-nav{display:flex;justify-content:space-between;align-items:center;padding:12px 22px 18px;gap:10px;
+    border-top:1px solid #EFE9DA}
+  .fiche-nav button{background:var(--blanc);border:1px solid var(--ligne);color:var(--petrole);
+    font-family:var(--ui);font-size:12px;letter-spacing:.06em;font-weight:700;padding:10px 14px;cursor:pointer}
+  .fiche-nav button:hover{background:#F3ECDB}
+  .fiche-nav button.next{background:var(--petrole);border-color:var(--petrole);color:var(--creme)}
+  .fiche-nav button.next:hover{background:var(--petrole-cl)}
+  .fiche-nav .pos{font-family:var(--ui);font-size:11px;letter-spacing:.1em;color:var(--gris)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <span class="brand">AQMAT</span>
+  <span class="title">À chacun son histoire, à nous le futur</span>
+  <span class="ed">Édition patrimoniale · 2026</span>
+</header>
+
+<section class="hero">
+  <div class="wm">70</div>
+  <div class="in">
+    <p class="kicker">Le Mur des 70 ans</p>
+    <h1>À chacun son histoire,<br>à nous le futur</h1>
+    <hr class="rule">
+    <p>Des marques durent, des familles entrepreneuriales résistent au temps. Notre magazine aussi, à vos côtés depuis maintenant 70 ans. <strong>Une seule ligne du temps</strong> réunit ici les entreprises honorées : remontez les décennies, arrêtez-vous sur une année, et découvrez celle qui y est née.</p>
+  </div>
+</section>
+
+<!-- bandeau d'avertissement : à retirer une fois la vraie liste d'entreprises en place -->
+<div class="band"><div class="in">⚠ Les entreprises affichées ci-dessous sont des <strong>données d’exemple</strong> tant que la collecte n’est pas terminée — à remplacer par les entreprises réellement confirmées avant la mise en ligne officielle du 1<sup>er</sup> novembre. Voir le guide d’intégration, section « Mettre à jour les données ».</div></div>
+
+<main>
+
+  <!-- ===== 1. LA LIGNE DU TEMPS — le fil conducteur ===== -->
+  <h2 class="section" id="tlHeading">La ligne du temps <span class="sub">— le fil conducteur de l’édition</span></h2>
+
+  <div class="stats-top">
+    <div class="b"><div class="v" id="stNb">—</div><div class="l">entreprises honorées</div></div>
+    <div class="b"><div class="v" id="stVieille">—</div><div class="l">la plus ancienne fondation</div></div>
+    <div class="b"><div class="v" id="stDec">—</div><div class="l">décennies traversées</div></div>
+  </div>
+
+  <p class="tl-help">Cliquez une décennie pour ne garder qu’elle dans le Mur, ou cliquez directement le nom d’une entreprise pour ouvrir sa fiche. Faites défiler vers la droite →</p>
+
+  <div class="tl" id="tlWrap">
+    <div class="tl-line"></div>
+    <div class="tl-row" id="tlRow"></div>
+  </div>
+
+  <!-- ===== 2. LE MUR ===== -->
+  <h2 class="section">Le Mur des 70 ans <span class="sub">— cliquez une tuile pour ouvrir la fiche</span></h2>
+  <div class="filters">
+    <input type="search" id="fSearch" placeholder="Rechercher une entreprise…" aria-label="Rechercher une entreprise">
+    <select id="fCat" aria-label="Filtrer par catégorie"><option value="">Toutes les catégories</option></select>
+    <button class="chip-actif" id="chipDec" type="button"></button>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="vide" id="vide" style="display:none">Aucune entreprise ne correspond à cette recherche.</p>
+
+  <div class="foot">Le Mur des 70 ans · AQMAT — édition patrimoniale « À chacun son histoire, à nous le futur »</div>
+</main>
+
+<div class="overlay" id="overlay">
+  <div class="fiche" role="dialog" aria-modal="true" aria-labelledby="fName">
+    <div class="fiche-head">
+      <div>
+        <span class="catTag" id="ficheCat">Catégorie</span>
+        <h3 id="fName">Nom de l’entreprise</h3>
+        <div class="meta"><span id="ficheDec"></span> · fiche <span id="fPos"></span></div>
+      </div>
+      <button id="fClose" aria-label="Fermer la fiche">✕</button>
+    </div>
+    <!--<div class="ba" id="ba">
+      <div class="present"><span>[ photo actuelle — fournie par l’entreprise ]</span></div>
+      <div class="clip" id="baClip">
+        <div class="past"><span>[ photo d’archives · <span id="baYear"></span> ]</span></div>
+      </div>-->
+      <div class="ba" id="ba">
+  <!-- Image d’hier -->
+  <img id="baImg1" class="past" src="" alt="Photo d’hier">
+
+  <!-- Clip contenant l’image d’aujourd’hui -->
+  <div id="baClip" class="clip">
+    <img id="baImg2" class="present" src="" alt="Photo d’aujourd’hui">
+  </div>
+
+  <!-- Curseur -->
+  <div id="baHandle" class="handle"></div>
+
+  <!-- Tags -->
+  <span class="tag" style="left:10px">Hier</span>
+  <span class="tag" style="right:10px">Aujourd’hui</span>
+</div>
+    <!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+       <!--<div class="handle" id="baHandle"></div>
+      <span class="tag" style="left:10px">Hier</span>
+      <span class="tag" style="right:10px">Aujourd’hui</span>
+    </div>-->
+    <div class="fiche-body">
+      <p class="hint">Glissez le curseur pour voir la devanture (ou l’usine) d’hier se transformer en celle d’aujourd’hui.</p>
+      <div class="stats">
+        <div class="box"><div class="v" id="sYear"></div><div class="l">Fondation</div></div>
+        <div class="box"><div class="v" id="sAge"></div><div class="l">Ans d’histoire</div></div>
+        <div class="box"><div class="v" id="sDec"></div><div class="l">Décennie</div></div>
+      </div>
+      <div class="capsule-box">
+        <div class="p">▶</div>
+        <div class="t">Capsule vidéo « hier → aujourd’hui → demain » (45-60 s) — à intégrer une fois déposée par l’entreprise.</div>
+      </div>
+      <h4>Repères chronologiques</h4>
+      <div class="reperes">
+        <div class="repere"><span class="y" id="rY1"></span><span class="t">Fondation — <span class="ph">récit des origines à fournir par l’entreprise</span></span></div>
+        <div class="repere"><span class="y">19__</span><span class="t"><span class="ph">jalon marquant (agrandissement, relève, incendie surmonté…) — à fournir</span></span></div>
+        <div class="repere"><span class="y">2026</span><span class="t">Aujourd’hui — <span class="ph">l’entreprise en une phrase, et son regard vers demain</span></span></div>
+      </div>
+      <h4>Un mot d’espoir pour la suite</h4>
+      <p class="quote" id="fQuote">« … »</p>
+    </div>
+    <div class="fiche-nav">
+      <button id="fPrev">◀ Fiche précédente</button>
+      <span class="pos" id="fPos2"></span>
+      <button id="fNext" class="next">Fiche suivante ▶</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   CONFIGURATION — c’est ICI, et nulle part ailleurs, que la mise à jour
+   des données se fait au fur et à mesure de la collecte.
+   Une ligne par entreprise :
+       n   = nom de l’entreprise (entre guillemets droits)
+       y   = année de fondation (un nombre, SANS guillemets)
+       cat = catégorie, à choisir exactement dans la liste CAT_COLOR ci-dessous
+   Il n’y a plus de champ « région » : le projet ne repose que sur la chronologie.
+   ========================================================================= */
+
+const DATA = [
+  {
+  n:"Pierre Naud inc.",
+  y:1890,
+  cat:"Marchand",
+  imgHier:"images/01.jpg",
+  imgAuj:"images/02.jpeg"
+},
+  {n:"Langevin Forest",                    y:1917, cat:"Marchand"},
+  {n:"BMR Quincaillerie J.R. Grégoire",    y:1920, cat:"Marchand"},
+  {n:"Potvin & Bouchard",                  y:1932, cat:"Marchand"},
+  {n:"Bibby-Ste-Croix",                    y:1921, cat:"Fabricant QC"},
+  {n:"Vaillancourt Portes et Fenêtres",    y:1947, cat:"Fabricant QC"},
+  {n:"Groupe Crête",                       y:1949, cat:"Fabricant QC"},
+  {n:"Permacon",                           y:1952, cat:"Fabricant QC"},
+  {n:"Groupe ADF",                         y:1956, cat:"Fabricant QC"},
+  {n:"CertainTeed",                        y:1904, cat:"Fabricant intl."},
+  {n:"Leviton",                            y:1906, cat:"Fabricant intl."},
+  {n:"Simpson Strong-Tie",                 y:1956, cat:"Fabricant intl."},
+  {n:"Groupe Deschênes",                   y:1940, cat:"Distributeur"},
+  {n:"Dickner inc.",                       y:1956, cat:"Distributeur"},
+];
+
+// Une couleur par catégorie. Pour ajouter une catégorie, ajoutez simplement sa ligne ici.
+const CAT_COLOR = {
+  "Marchand":          "#1E4F63",
+  "Groupement d'achat":"#5A6E3A",
+  "Distributeur":      "#7D4A35",
+  "Fabricant QC":      "#8A6A2F",
+  "Fabricant intl.":   "#4A5A66"
+};
+
+// Citations d’exemple — à remplacer par de vraies citations une fois les capsules reçues.
+const QUOTES = [
+  "On a traversé bien des tempêtes, mais on est encore là — et on compte y être pour longtemps.",
+  "Ce qui n’a pas changé, c’est notre parole. Le reste, on s’adapte.",
+  "La relève est prête. On leur laisse une maison solide.",
+  "70 ans, ce n’est pas un aboutissement — c’est un nouveau départ."
+];
+
+const NOW = 2026;                 // année de référence pour le calcul « X ans d’histoire »
+const SPECIAL_DECADE = "1950s";   // décennie mise en évidence (celle du magazine)
+const SPECIAL_LABEL  = "★ 1956 — le magazine de l’AQMAT (le « Quart de Rond ») fête ses 70 ans en 2026";
+const SORT_MODE = "annee";        // "annee" (chronologique) ou "alpha" (alphabétique)
+
+/* ============ fin de la configuration — ne rien modifier sous cette ligne ============ */
+
+const decade = y => Math.floor(y/10)*10 + "s";
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+const grid    = document.getElementById('grid');
+const vide    = document.getElementById('vide');
+const fSearch = document.getElementById('fSearch');
+const fCat    = document.getElementById('fCat');
+const chipDec = document.getElementById('chipDec');
+
+let decActive = "";      // décennie sélectionnée dans la ligne du temps ("" = toutes)
+let currentList = [];
+let selected = null;
+
+// --- listes déroulantes ---
+[...new Set(DATA.map(d=>d.cat))].sort((a,b)=>a.localeCompare(b,'fr')).forEach(v=>{
+  const o=document.createElement('option'); o.value=v; o.textContent=v; fCat.appendChild(o);
+});
+
+// --- chiffres d'ouverture ---
+(function(){
+  const annees = DATA.map(d=>d.y);
+  document.getElementById('stNb').textContent      = DATA.length;
+  document.getElementById('stVieille').textContent = annees.length ? Math.min(...annees) : '—';
+  document.getElementById('stDec').textContent     = new Set(DATA.map(d=>decade(d.y))).size;
+})();
+
+// --- filtrage ---
+function filteredSorted(){
+  const q = fSearch.value.trim().toLowerCase(), cat = fCat.value;
+  const f = DATA.filter(d =>
+    (!q || d.n.toLowerCase().includes(q)) &&
+    (!cat || d.cat === cat) &&
+    (!decActive || decade(d.y) === decActive));
+  f.sort(SORT_MODE === "alpha" ? (a,b)=>a.n.localeCompare(b.n,'fr') : (a,b)=>a.y - b.y);
+  return f;
+}
+
+function tileHTML(d){
+  return `<div class="card" role="button" tabindex="0">
+    <div class="cover">
+      <span class="chip" style="background:${CAT_COLOR[d.cat]||'#1E4F63'}">${esc(d.cat)}</span>
+      <span class="ph">photo d’archives</span>
+      <span class="play">▶</span>
+      <span class="yr">${d.y}</span>
+    </div>
+    <div class="body">
+      <div class="name">${esc(d.n)}</div>
+      <div class="meta">${NOW-d.y} ans d’histoire</div>
+    </div>
+  </div>`;
+}
+
+function renderGrid(){
+  currentList = filteredSorted();
+  grid.innerHTML = currentList.map(tileHTML).join('');
+  const n = currentList.length;
+  document.getElementById('count').textContent =
+    n + ' entreprise' + (n>1?'s':'') + ' affichée' + (n>1?'s':'');
+  vide.style.display = n ? 'none' : 'block';
+  [...grid.children].forEach((card,i)=>{
+    card.addEventListener('click', ()=> openFiche(currentList[i]));
+    card.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openFiche(currentList[i]); }});
+  });
+  // état du bouton « décennie active »
+  chipDec.classList.toggle('on', !!decActive);
+  chipDec.textContent = decActive ? 'Décennie ' + decActive + '  ✕' : '';
+  document.querySelectorAll('.tl-col').forEach(c=>
+    c.classList.toggle('actif', c.dataset.dec === decActive && !!decActive));
+}
+[fSearch,fCat].forEach(el => el.addEventListener('input', renderGrid));
+chipDec.addEventListener('click', ()=>{ decActive = ""; renderGrid(); });
+
+// --- ligne du temps ---
+(function buildTimeline(){
+  const parDec = {};
+  DATA.forEach(d=>{ const k = decade(d.y); (parDec[k] = parDec[k] || []).push(d); });
+  const decs = Object.keys(parDec).sort().map(k=>{
+    const items = parDec[k].slice().sort((a,b)=>a.y-b.y);
+    return { label:k, items, count:items.length, size:18+items.length*4, special:k===SPECIAL_DECADE };
+  });
+  let html = decs.map(dd => `
+    <div class="tl-col" data-dec="${dd.label}">
+      <button class="tl-head" type="button" data-dec="${dd.label}"
+              aria-label="Filtrer le Mur sur la décennie ${dd.label}">
+        <div class="tl-decade">${dd.label}</div>
+        <div class="tl-count">${dd.count} fondation${dd.count>1?'s':''}</div>
+        <div class="tl-dot" style="width:${dd.size}px;height:${dd.size}px;background:${dd.special?'var(--or)':'var(--petrole)'}">${dd.count}</div>
+      </button>
+      ${dd.special ? `<div class="tl-special">${SPECIAL_LABEL}</div>` : ''}
+      ${dd.items.map(it=>`<div class="tl-card" data-nom="${esc(it.n)}"><div class="y">${it.y}</div><div class="n">${esc(it.n)}</div></div>`).join('')}
+    </div>`).join('');
+  html += `<div class="tl-col tl-now">
+      <div class="y">${NOW}</div><div class="lbl">aujourd’hui</div>
+      <div class="dot"></div>
+      <div class="box">Dévoilement de l’édition patrimoniale le <strong>1<sup>er</sup> novembre 2026</strong> — 70 histoires, un seul futur.</div>
+    </div>`;
+  const row = document.getElementById('tlRow');
+  row.innerHTML = html;
+
+  row.querySelectorAll('.tl-head').forEach(btn => btn.addEventListener('click', ()=>{
+    const d = btn.dataset.dec;
+    decActive = (decActive === d) ? "" : d;   // second clic = on enlève le filtre
+    renderGrid();
+    document.querySelector('.filters').scrollIntoView({behavior:'smooth', block:'start'});
+  }));
+  row.querySelectorAll('.tl-card').forEach(c => c.addEventListener('click', ()=>{
+    const e = DATA.find(d => d.n === c.dataset.nom);
+    if (!e) return;
+    decActive = ""; fSearch.value = ""; fCat.value = "";
+    renderGrid();
+    openFiche(e);
+  }));
+})();
+
+renderGrid();
+
+// --- fiche (modale) ---
+/*const overlay  = document.getElementById('overlay');
+const ba       = document.getElementById('ba');
+const baClip   = document.getElementById('baClip');
+const baHandle = document.getElementById('baHandle');
+let dragging = false;*/
+
+const overlay = document.getElementById('overlay');
+const ba = document.getElementById('ba');
+const baClip = document.getElementById('baClip');
+const baHandle = document.getElementById('baHandle');
+const baImg1 = document.getElementById('baImg1');
+const baImg2 = document.getElementById('baImg2');
+let dragging = false;
+
+function openFiche(d){
+  selected = d;
+
+  document.getElementById('ficheCat').textContent  = d.cat;
+  document.getElementById('fName').textContent     = d.n;
+  document.getElementById('ficheDec').textContent  = 'Décennie ' + decade(d.y);
+
+  /*document.getElementById('baYear').textContent    = d.y;*/
+  document.getElementById('sYear').textContent     = d.y;
+  document.getElementById('sAge').textContent      = NOW - d.y;
+  document.getElementById('sDec').textContent      = decade(d.y);
+  document.getElementById('rY1').textContent       = d.y;
+
+  document.getElementById('fQuote').textContent    = '« ' + QUOTES[d.y % QUOTES.length] + ' »';
+
+  baImg1.src = d.imgHier || '';
+  baImg2.src = d.imgAuj || '';
+
+  setSliderPos(0.5);
+  updatePos();
+
+  overlay.classList.add('open');
+  document.getElementById('fClose').focus();
+}
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+function updatePos(){
+  const idx = currentList.findIndex(d => d.n === selected.n);
+  const txt = (idx>=0 ? idx+1 : 1) + ' / ' + (currentList.length || 1);
+  document.getElementById('fPos').textContent  = txt;
+  document.getElementById('fPos2').textContent = txt;
+}
+function closeFiche(){ overlay.classList.remove('open'); selected = null; }
+function step(dir){
+  if (!currentList.length || !selected) return;
+  let i = currentList.findIndex(d => d.n === selected.n);
+  if (i < 0) i = 0;
+  i = (i + dir + currentList.length) % currentList.length;
+  openFiche(currentList[i]);
+}
+document.getElementById('fClose').addEventListener('click', closeFiche);
+document.getElementById('fPrev').addEventListener('click', ()=>step(-1));
+document.getElementById('fNext').addEventListener('click', ()=>step(1));
+overlay.addEventListener('click', e=>{ if (e.target === overlay) closeFiche(); });
+window.addEventListener('keydown', e=>{
+  if (!selected) return;
+  if (e.key === 'Escape')     closeFiche();
+  if (e.key === 'ArrowRight') step(1);
+  if (e.key === 'ArrowLeft')  step(-1);
+});
+
+function setSliderPos(p){
+  p = Math.max(0, Math.min(1, p));
+  baClip.style.width  = (p*100) + '%';
+  baHandle.style.left = (p*100) + '%';
+}
+function posFromEvent(e){
+  const rect = ba.getBoundingClientRect();
+  const x = (e.touches ? e.touches[0].clientX : e.clientX);
+  return (x - rect.left) / rect.width;
+}
+ba.addEventListener('pointerdown', e=>{ dragging = true; ba.setPointerCapture(e.pointerId); setSliderPos(posFromEvent(e)); });
+ba.addEventListener('pointermove', e=>{ if (dragging) setSliderPos(posFromEvent(e)); });
+ba.addEventListener('pointerup',   ()=> dragging = false);
+</script>
+</body>
+</html>
