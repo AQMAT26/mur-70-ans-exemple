@@ -222,7 +222,9 @@
 </section>
 
 <!-- bandeau d'avertissement : à retirer une fois la vraie liste d'entreprises en place -->
-<div class="band"><div class="in">⚠ Les entreprises affichées ci-dessous sont des <strong>données d’exemple</strong> tant que la collecte n’est pas terminée — à remplacer par les entreprises réellement confirmées avant la mise en ligne officielle du 1<sup>er</sup> novembre. Voir le guide d’intégration, section « Mettre à jour les données ».</div></div>
+<div class="band"><div class="in">⚠ Pour l’instant, les informations contenues dans cette page sont <strong>fictives</strong>, elles seront remplacées lors du lancement officiel de chacune des entreprises inscrites à cet hommage.
+<br>Restez à l’affût, nous vous présenterons le mur de légendes prochainement.<br>
+Il est encore temps d'inscrire votre entreprise en contactant <strong>Sylvie Landry</strong> au <strong>418-809-6794</strong> ou <strong>slandry@aqmat.org</strong></div></div>
 
 <main>
 
@@ -336,8 +338,8 @@ const DATA = [
   n:"Nom de votre entreprise",
   y:1890,
   cat:"Marchand",
-  imgHier:"images/01.jpg",
-  imgAuj:"images/02.jpeg"
+  imgHier:"",
+  imgAuj:""
 },
   {n:"Nom de votre entreprise",                    y:1917, cat:"Marchand"},
   {n:"Nom de votre entreprise",    y:1920, cat:"Marchand"},
@@ -472,7 +474,7 @@ chipDec.addEventListener('click', ()=>{ decActive = ""; renderGrid(); });
   html += `<div class="tl-col tl-now">
       <div class="y">${NOW}</div><div class="lbl">aujourd’hui</div>
       <div class="dot"></div>
-      <div class="box">Dévoilement de l’édition patrimoniale le <strong>1<sup>er</sup> novembre 2026</strong> — 70 histoires, un seul futur.</div>
+      <div class="box">Dévoilement de l’édition patrimoniale le <strong>1<sup>er</sup> décembre 2026</strong> — vos histoires, un seul futur.</div>
     </div>`;
   const row = document.getElementById('tlRow');
   row.innerHTML = html;
